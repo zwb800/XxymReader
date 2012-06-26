@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <com.reader.xxym.CustomLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+        <TextView
+            android:id="@+id/textView1"
+            android:lineSpacingExtra="10dp"
+            android:textColor="#837862"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:shadowColor="@android:color/white"
+            android:shadowDx="0"
+            android:shadowDy="1"
+            android:shadowRadius="1"
+            android:text="TextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextView" />
+        
+    </com.reader.xxym.CustomLinearLayout>

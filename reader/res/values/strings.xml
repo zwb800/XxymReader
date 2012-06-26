@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">心香一脉</string>
+    <string name="menuitem_exit">退出</string>
+  <string name="menuitem_refersh">刷新</string>
+</resources>
