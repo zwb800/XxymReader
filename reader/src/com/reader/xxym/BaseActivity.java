@@ -4,11 +4,15 @@ import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 import com.kuguo.ad.PushAdsManager;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 public class BaseActivity extends Activity {
 
-	 protected GoogleAnalyticsTracker tracker;
+	protected static final int EXITDIALOG = 1;
+	protected GoogleAnalyticsTracker tracker;
 
 	@Override
 	protected void onStop() {
@@ -18,36 +22,69 @@ public class BaseActivity extends Activity {
 	}
 
 	@Override
-	  protected void onCreate(Bundle savedInstanceState) {
-	    super.onCreate(savedInstanceState);
+	protected Dialog onCreateDialog(int id) {
+		// TODO Auto-generated method stub
+		switch (id) {
+		case 1:
+			AlertDialog d = new AlertDialog.Builder(this)
+					.setMessage("确定要退出吗")
+					.setNegativeButton("取消",
+							new DialogInterface.OnClickListener() {
 
-	    tracker = GoogleAnalyticsTracker.getInstance();
+								@Override
+								public void onClick(DialogInterface arg0,
+										int arg1) {
+									arg0.dismiss();
 
-	    // Start the tracker in manual dispatch mode...
-	    tracker.startNewSession("UA-15153331-5", this);
-	    // ...alternatively, the tracker can be started with a dispatch interval (in seconds).
-	    //tracker.startNewSession("UA-YOUR-ACCOUNT-HERE", 20, this);
-	  }
+								}
+							})
+					.setPositiveButton("确定",
+							new DialogInterface.OnClickListener() {
 
-	  @Override
-	  protected void onDestroy() {
-	    super.onDestroy();
-	    // Stop the tracker when it is no longer needed.
-	    tracker.stopSession();
-	  }
-	  
-	  protected void loadAD()
-	  {
-    	/*
-		 ＊获取PushAdsManager的唯一实例
-    	 */
+								@Override
+								public void onClick(DialogInterface arg0,
+										int arg1) {
+									BaseActivity.this.finish();
+								}
+							}).create();
+			return d;
+		}
+		return super.onCreateDialog(id);
+	}
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		tracker = GoogleAnalyticsTracker.getInstance();
+
+		// Start the tracker in manual dispatch mode...
+		tracker.startNewSession("UA-15153331-5", this);
+		// ...alternatively, the tracker can be started with a dispatch interval
+		// (in seconds).
+		// tracker.startNewSession("UA-YOUR-ACCOUNT-HERE", 20, this);
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		// Stop the tracker when it is no longer needed.
+		tracker.stopSession();
+	}
+
+	protected void loadAD() {
+		/*
+		 * ＊获取PushAdsManager的唯一实例
+		 */
 		PushAdsManager paManager = PushAdsManager.getInstance();
-		
+
 		/*
 		 * 广告接口 receivePushMessage(Context ctx, boolean isTiming)
-		 * @param ctx 
-		 * @param isTiming  值为true，在调用广告接口时起，定时两小时请求一次；值为false，只在调用广告接口时请求广告
+		 * 
+		 * @param ctx
+		 * 
+		 * @param isTiming 值为true，在调用广告接口时起，定时两小时请求一次；值为false，只在调用广告接口时请求广告
 		 */
-		paManager.receivePushMessage(this, false);
-	  }
+		paManager.receivePushMessage(this, true);
+	}
 }

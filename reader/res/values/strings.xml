@@ -4,4 +4,6 @@
     <string name="app_name">心香一脉</string>
     <string name="menuitem_exit">退出</string>
   <string name="menuitem_refersh">刷新</string>
+  <string name="loading">加载中...</string>
+  <string name="loadmore">加载更多</string>
 </resources>
