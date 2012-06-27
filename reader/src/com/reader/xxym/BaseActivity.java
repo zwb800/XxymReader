@@ -85,6 +85,6 @@ public class BaseActivity extends Activity {
 		 * 
 		 * @param isTiming 值为true，在调用广告接口时起，定时两小时请求一次；值为false，只在调用广告接口时请求广告
 		 */
-		paManager.receivePushMessage(this, true);
+		paManager.receivePushMessage(this, false);
 	}
 }
