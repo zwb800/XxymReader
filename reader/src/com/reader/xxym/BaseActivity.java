@@ -67,9 +67,10 @@ public class BaseActivity extends Activity {
 
 	@Override
 	protected void onDestroy() {
+		tracker.stopSession();
 		super.onDestroy();
 		// Stop the tracker when it is no longer needed.
-		tracker.stopSession();
+		
 	}
 
 	protected void loadAD() {

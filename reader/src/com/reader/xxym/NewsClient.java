@@ -52,7 +52,7 @@ public abstract class NewsClient {
 				}
 
 				MatchField(">([^<]+?)</a></h[2-3]>", result, "title", list);
-				MatchField("(http://x.limgs.cn(/\\w+)+.\\w+)", result, "cover",
+				MatchField("(http://x.limgs.cn(/\\w+)+/\\w{32,}.\\w+)", result, "cover",
 						list);
 				MatchField("<p>(.+?)</p>", result, "description", list);
 
@@ -83,7 +83,7 @@ public abstract class NewsClient {
 
 		Matcher m = p.matcher(html);
 
-		for (int i = 0; m.find(); i++) {
+		for (int i = 0; m.find()&&i<list.size(); i++) {
 			MatchResult mr = m.toMatchResult();
 			Map<String, Object> map = list.get(i);
 			map.put(field, mr.group(1));
