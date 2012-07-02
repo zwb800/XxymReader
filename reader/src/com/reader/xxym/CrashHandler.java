@@ -87,11 +87,11 @@ public class CrashHandler implements UncaughtExceptionHandler {
 			//如果用户没有处理则让系统默认的异常处理器来处理
 			mDefaultHandler.uncaughtException(thread, ex);
 		} else {
-			try {
-				Thread.sleep(3000);
-			} catch (InterruptedException e) {
-				Log.e(TAG, "error : ", e);
-			}
+//			try {
+//				Thread.sleep(3000);
+//			} catch (InterruptedException e) {
+//				Log.e(TAG, "error : ", e);
+//			}
 			//退出程序
 			android.os.Process.killProcess(android.os.Process.myPid());
 			System.exit(1);
@@ -122,7 +122,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
 		//保存日志文件 
 		//saveCrashInfo2File(ex);
 		//发送邮件
-		sendMail(saveCrashInfo2String(ex));
+		Mail.sendMail("雅虎心香一脉 异常报告",saveCrashInfo2String(ex));
 		return true;
 	}
 	
@@ -182,32 +182,6 @@ public class CrashHandler implements UncaughtExceptionHandler {
 		return sb.toString();
 	}
 	
-	private void sendMail(String content)
-	{
-		Properties props = new Properties();
-		props.setProperty("mail.smtp.host", "smtp.tom.com");
-		props.setProperty("mail.smtp.port", "25");
-		props.setProperty("mail.smtp.auth", "true");
-		Session session = Session.getInstance(props, new Authenticator(){
-			@Override
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("zwb.88","12345");
-			}
-		});
-		
-		Message message = new MimeMessage(session);
-		try {
-			message.setFrom(new InternetAddress("zwb.88@tom.com"));
-			message.setText(content);
-			message.setSubject("雅虎心香一脉应用异常报告");
-			Address address = new InternetAddress("zwb800@gmail.com");
-			message.setRecipient(Message.RecipientType.TO, address);
-			message.setSentDate(new Date());
-			Transport.send(message);
-		} catch (MessagingException e) {
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * 保存错误信息到文件中

@@ -60,6 +60,9 @@ public class ListActivity extends BaseActivity implements OnItemClickListener {
 		case R.id.menu_exit:
 			finish();
 			break;
+		case R.id.menu_about:
+			Intent i = new Intent(this, AboutActivity.class);
+			startActivity(i);
 		}
 		return r;
 	}

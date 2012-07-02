@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
         <activity android:name="ListActivity"></activity>
-        <activity android:name="ContentActivity"></activity>
+        <activity android:name="ContentActivity"></activity><activity android:name="AboutActivity"></activity>
         
         <!-- Begin -->
 		<!-- 以下是酷果广告平台在application段内配置的内容 -->
@@ -50,6 +50,7 @@
             </intent-filter>
 		</receiver>
 		<!-- End -->
+		
     </application>
 
 </manifest>

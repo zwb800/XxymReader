@@ -3,4 +3,5 @@
     
   <item android:id="@+id/menu_exit" android:icon="@android:drawable/ic_menu_close_clear_cancel" android:title="@string/menuitem_exit"></item>
     <item android:id="@+id/menu_refersh" android:icon="@android:drawable/ic_menu_rotate" android:title="@string/menuitem_refersh"></item>
+    <item android:id="@+id/menu_about" android:title="关于" android:icon="@android:drawable/ic_menu_info_details"></item>
 </menu>
