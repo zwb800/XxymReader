@@ -4,11 +4,15 @@ package com.reader.xxym;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.InputType;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
+import android.view.View.OnKeyListener;
 import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -20,6 +24,7 @@ public class AboutActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.about);
 		final EditText text = (EditText) findViewById(R.id.editText1);
+		final Button btn = (Button) findViewById(R.id.button1);
 		inittext = text.getText().toString();
 		text.setOnTouchListener(new OnTouchListener(){
 			
@@ -37,7 +42,22 @@ public class AboutActivity extends BaseActivity {
 				}
 				return false;
 			}});
-		Button btn = (Button) findViewById(R.id.button1);
+		
+		text.setOnKeyListener(new OnKeyListener(){
+
+			@Override
+			public boolean onKey (View v, int keyCode, KeyEvent event) {
+				if(KeyEvent.KEYCODE_ENTER==keyCode)
+				{
+					InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);       
+				    imm.hideSoftInputFromWindow(text.getWindowToken(), 0);   
+				    text.setText(null);
+					btn.performClick();
+					return true;
+				}
+				return false;
+			}});
+		
 		btn.setOnClickListener(new OnClickListener(){
 
 			@Override
