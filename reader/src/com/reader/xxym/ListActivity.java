@@ -79,9 +79,10 @@ public class ListActivity extends BaseActivity implements OnItemClickListener {
 		@SuppressWarnings("unchecked")
 		Map<String, String> item = (Map<String, String>) parent
 				.getItemAtPosition(position);
+		tracker.trackPageView(item.get("title"));
 		Intent i = new Intent(this, ContentActivity.class);
 		i.putExtra("url", item.get("url"));
-
+	
 		startActivity(i);
 	}
 
