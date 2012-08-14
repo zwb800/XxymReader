@@ -32,7 +32,6 @@ public class ListActivity extends BaseActivity implements OnItemClickListener {
 		super.onCreate(savedInstanceState);
 		tracker.trackPageView("/List");
 		setContentView(R.layout.list);
-		loadAD();
 		vp = (ViewPager) findViewById(R.id.viewpager);
 		PagerAdapter pa = new ViewPagerAdapter(NewsClient.kindname);
 		vp.setAdapter(pa);

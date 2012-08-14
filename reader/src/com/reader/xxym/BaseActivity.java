@@ -72,20 +72,4 @@ public class BaseActivity extends Activity {
 		// Stop the tracker when it is no longer needed.
 		
 	}
-
-	protected void loadAD() {
-		/*
-		 * ＊获取PushAdsManager的唯一实例
-		 */
-		PushAdsManager paManager = PushAdsManager.getInstance();
-
-		/*
-		 * 广告接口 receivePushMessage(Context ctx, boolean isTiming)
-		 * 
-		 * @param ctx
-		 * 
-		 * @param isTiming 值为true，在调用广告接口时起，定时两小时请求一次；值为false，只在调用广告接口时请求广告
-		 */
-		paManager.receivePushMessage(this, false);
-	}
 }
