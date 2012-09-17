@@ -25,7 +25,7 @@ public class BaseActivity extends Activity {
 	protected Dialog onCreateDialog(int id) {
 		// TODO Auto-generated method stub
 		switch (id) {
-		case 1:
+		case EXITDIALOG:
 			AlertDialog d = new AlertDialog.Builder(this)
 					.setMessage("确定要退出吗")
 					.setNegativeButton("取消",

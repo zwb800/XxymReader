@@ -61,12 +61,12 @@ public abstract class NewsContentClient {
 						m = p.matcher(content);
 						content = m.replaceAll("");
 						content = content.replace("\r", "");
-						p = Pattern.compile("(\n+)\\w", Pattern.MULTILINE);
-						m = p.matcher(content);
-						if (m.find() && m.find()) {
-							int s = m.end(1);
-							content = content.substring(s);
-						}
+//						p = Pattern.compile("(\n+)\\w", Pattern.MULTILINE);
+//						m = p.matcher(content);
+//						if (m.find() && m.find()) {
+//							int s = m.end(1);
+//							content = content.substring(s);
+//						}
 
 						ndao.updateNews(url, content);
 						fillResult(content);
